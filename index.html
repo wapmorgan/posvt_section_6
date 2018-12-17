@@ -1,0 +1,73 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles/main.css">
+    <script type="text/javascript" src="assets/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<div class="flex-container">
+		<div>
+			<label for="name-1">Name:</label>
+			<input type="text" id="name-1"/><br />
+			<input type="text" placeholder="Name" /><br />
+			<label for="email-1">E-mail:</label>
+			<input type="email" class="checkable" id="email-1" required="true"/><br />
+		</div>
+
+		<div>
+			<input type="checkbox" class="style1"/><input type="checkbox" class="style1 outset"/><br />
+			<input type="checkbox" checked="checked" class="style1"/><input type="checkbox" checked="checked" class="style1 outset"/><br />
+			<input type="checkbox" checked="checked" class="style2"/><input type="checkbox" checked="checked" class="style2 outset"/><br />
+			<input type="checkbox" checked="checked" class="style3"/><input type="checkbox" checked="checked" class="style3 outset"/><br />
+			<input type="checkbox" checked="checked" class="style4"/><input type="checkbox" checked="checked" class="style4 outset"/><br />
+			<input type="checkbox" checked="checked" class="style5"/><input type="checkbox" checked="checked" class="style5 outset"/><br />
+			<input type="checkbox" checked="checked" class="style6"/><input type="checkbox" checked="checked" class="style6 outset"/><br />
+			<input type="checkbox" class="style7"/><input type="checkbox" class="style7 outset"/><br />
+		</div>
+
+		<div>
+			<input type="radio" name="radio-1"/><input type="radio" name="radio-1"/><br />
+		</div>
+	</div>
+
+	<div class="flex-container to-right">
+		<div>
+			<a class="button-nav">◄</a><a class="button-nav">►</a>
+		</div>
+	</div>
+
+	<div class="flex-container">
+		<div>
+			<a class="button blue">Push me please</a><br />
+		</div>
+
+		<div>
+			<a class="button green">Push me please</a><br />
+		</div>
+	</div>
+    <script>
+        var validations ={
+    email: [/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/, 'Please enter a valid email address']
+};
+$(document).ready(function(){
+    // Check all the input fields of type email. This function will handle all the email addresses validations
+    $("input[type=email]").change( function(){
+        // Set the regular expression to validate the email
+        validation = new RegExp(validations['email'][0]);
+        // validate the email value against the regular expression
+        if (!validation.test(this.value)){
+            // If the validation fails then we show the custom error message
+            this.classList.add('invalid')
+            this.classList.remove('valid')
+            this.setCustomValidity(validations['email'][1]);
+            return false;
+        } else {
+            // This is really important. If the validation is successful you need to reset the custom error message
+            this.classList.add('valid')
+            this.classList.remove('invalid')
+            this.setCustomValidity('asdasdas');
+        }
+    });
+})
+</script>
+</body>
+</html>
